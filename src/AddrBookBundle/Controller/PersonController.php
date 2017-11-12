@@ -58,9 +58,8 @@ class PersonController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($person);
             $em->flush();
-            $lastPersonId = $person->getId();
 
-            return $this->redirectToRoute("show_id", ['id' => $lastPersonId]);
+            return $this->redirectToRoute("show_id", ['id' => $person]);
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -107,14 +106,13 @@ class PersonController extends Controller
 
     /**
      * @Route("/{id}/delete", name="delete")
-     * @param Request $request
      * @Method("GET")
+     * @param Person $person
      * @return Response
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Person $person)
     {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AddrBookBundle:Person')->find($id);
+       $em = $this->getDoctrine()->getManager();
         if (!$person) {
             return $this->redirectToRoute("index");
         }
@@ -152,11 +150,10 @@ class PersonController extends Controller
 
     /**
      * @Route("/", name="index")
-     * @param Request $request
      * @Method("GET")
      * @return Response
      */
-    public function showAllAction(Request $request)
+    public function showAllAction()
     {
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AddrBookBundle:Person')

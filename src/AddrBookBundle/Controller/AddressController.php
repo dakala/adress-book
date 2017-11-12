@@ -15,7 +15,7 @@ class AddressController extends Controller
     public function deleteAddressAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $address = $em->getRepository('AddrBookBundle:Address')->find($id);
+        $address = $em->getRepository('AddrBookBundle:Address');
         if (!$address) {
             return $this->redirectToRoute("index");
         }
