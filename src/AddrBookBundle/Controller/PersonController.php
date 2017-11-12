@@ -124,18 +124,17 @@ class PersonController extends Controller
 
     /**
      * @Route("/{id}", name="show_id")
-     * @param Request $request
      * @Method("GET")
+     * @param Person $person
      * @return Response
      */
-    public function showAction(Request $request, $id)
+    public function showAction(Person $person)
     {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AddrBookBundle:Person')->find($id);
         if (!$person) {
             return $this->redirectToRoute("index");
         }
 
+        $em = $this->getDoctrine()->getManager();
         $addresses = $em->getRepository('AddrBookBundle:Address')
             ->findByPerson($person);
 
