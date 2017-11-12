@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+        <h2>Lista osób</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>L.p.</th>
+                <th>Nazwisko i imię</th>
+                <th>Szczegóły</th>
+                <th>Usuń</th>
+                <th>Edycja</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for element in person %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="{{ path('index') }} {{ element.id }}">{{ element.surname }} {{ element.name }}</a></td>
+                    <td><a href=" {{ path('index') }} {{ element.id }}">
+                            <button type="button" class="btn btn-info">Info</button>
+                        </a></td>
+                    <td><a href=" {{ path('delete', {'id' : element.id}) }}">
+                            <button type="button" class="btn btn-danger">Usuń</button>
+                        </a></td>
+                    <td><a href=" {{ path('modify_id', {'id':  element.id }) }}">
+                            <button type="button" class="btn btn-warning">Edycja</button>
+                        </a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}

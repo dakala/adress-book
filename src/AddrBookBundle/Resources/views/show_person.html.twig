@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Dane osoby</h1>
+    <div class="jumbotron">
+    <h3>Imię: {{ person.name }} </h3>
+    <h3>Nazwisko: {{ person.surname }}</h3><br>
+    <h4>Opis: {{ person.description }} </h4>
+    <br>
+
+    <h4>Adresy:</h4>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>L.p.</th>
+            <th>Adres</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ address.city }}, {{ address.street }} {{ address.houseNum }} m. {{ address.flatNum }}</td>
+            </tr>
+        {% else %}
+            <p>Brak adresów</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+
+{% endblock %}
