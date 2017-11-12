@@ -1,0 +1,4 @@
+services:
+#    addr_book.example:
+#        class: AddrBookBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
