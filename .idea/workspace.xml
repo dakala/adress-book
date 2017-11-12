@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7040a59-21bf-46c8-8f53-0776a4ffd1fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/AddrBookBundle.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Entity/Address.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Entity/Email.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Entity/Person.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Entity/Phone.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Form/PersonType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Repository/AddressRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Repository/EmailRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Repository/PersonRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Repository/PhoneRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Resources/config/services.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Resources/views/Default/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Tests/Controller/AddressControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Tests/Controller/PersonControllerTest.php" />
+    <list default="true" id="f7040a59-21bf-46c8-8f53-0776a4ffd1fe" name="Default" comment="Some refactoring done">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php" afterPath="$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,24 +31,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Person.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Person.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Entity/Person.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="435">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#41#89#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersonType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Form/PersonType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -82,8 +58,8 @@
       <file leaf-file-name="AddressController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="44" lean-forward="false" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+            <state relative-caret-position="285">
+              <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding>
                 <element signature="e#45#102#0#PHP" expanded="true" />
               </folding>
@@ -91,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PersonController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="143" column="29" lean-forward="false" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
+            <state relative-caret-position="149">
+              <caret line="158" column="42" lean-forward="false" selection-start-line="158" selection-start-column="42" selection-end-line="158" selection-end-column="42" />
               <folding>
                 <element signature="e#45#78#0#PHP" expanded="true" />
               </folding>
@@ -177,13 +153,14 @@
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Resources/views/show_all_person.html.twig" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Form/PersonType.php" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Form/AddressType.php" />
-        <option value="$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Resources/views/edit_person.html.twig" />
-        <option value="$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Resources/views/show_person.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Entity/Address.php" />
         <option value="$PROJECT_DIR$/src/AddrBookBundle/Entity/Person.php" />
+        <option value="$PROJECT_DIR$/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectRepository.php" />
+        <option value="$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php" />
+        <option value="$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php" />
       </list>
     </option>
   </component>
@@ -223,24 +200,6 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="address_book" type="cbb8eebc:String" user="address_book" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="address_book" type="cbb8eebc:String" user="address_book" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="address_book" type="cbb8eebc:String" user="address_book" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="AddrBookBundle" type="cbb8eebc:String" user="AddrBookBundle" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="address_book" type="cbb8eebc:String" user="address_book" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="AddrBookBundle" type="cbb8eebc:String" user="AddrBookBundle" />
-              <item name="Entity" type="cbb8eebc:String" user="Entity" />
             </path>
           </expand>
           <select />
@@ -298,7 +257,7 @@
       <workItem from="1510312462672" duration="26148000" />
       <workItem from="1510410813419" duration="775000" />
       <workItem from="1510432167086" duration="10000" />
-      <workItem from="1510502507512" duration="8165000" />
+      <workItem from="1510502507512" duration="8810000" />
     </task>
     <task id="LOCAL-00001" summary="Commit 1">
       <created>1509879361561</created>
@@ -321,23 +280,31 @@
       <option name="project" value="LOCAL" />
       <updated>1510513219990</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Corrected bug - it is now possible to delete user with address">
+      <created>1510513338458</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1510513338458</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42442000" />
+    <option name="totallyTimeSpent" value="43087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="14" y="23" width="1255" height="767" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27370158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27370158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886904" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886904" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -359,7 +326,8 @@
     <MESSAGE value="Commit 1" />
     <MESSAGE value="It is now possible to add users, edit users and their addresses, delete users and addresses" />
     <MESSAGE value="Corrected bug - it is now possible to delete user with address" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected bug - it is now possible to delete user with address" />
+    <MESSAGE value="Some refactoring done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some refactoring done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -724,26 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="44" lean-forward="false" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-          <folding>
-            <element signature="e#45#102#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="143" column="29" lean-forward="false" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
-          <folding>
-            <element signature="e#45#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Entity/Address.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -752,12 +700,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/AddressController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding>
+            <element signature="e#45#102#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Entity/Person.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#41#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddrBookBundle/Controller/PersonController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="158" column="42" lean-forward="false" selection-start-line="158" selection-start-column="42" selection-end-line="158" selection-end-column="42" />
+          <folding>
+            <element signature="e#45#78#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

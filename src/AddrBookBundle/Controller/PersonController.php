@@ -116,12 +116,12 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AddrBookBundle:Person')->find($id);
         if (!$person) {
-            return new Response('Brakm użytkownika o podanym id');
+            return $this->redirectToRoute("index");
         }
         $em->remove($person);
         $em->flush();
 
-        return new Response('Użytkownik został usunięty');
+        return $this->redirectToRoute("index");
     }
 
     /**
@@ -135,7 +135,7 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AddrBookBundle:Person')->find($id);
         if (!$person) {
-            return new Response('Brakm użytkownika o podanym id');
+            return $this->redirectToRoute("index");
         }
 
         $addresses = $em->getRepository('AddrBookBundle:Address')
@@ -150,7 +150,6 @@ class PersonController extends Controller
         );
     }
 
-
     /**
      * @Route("/", name="index")
      * @param Request $request
@@ -162,9 +161,6 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AddrBookBundle:Person')
             ->findBy([], ['surname' => 'ASC']);
-        if (!$person) {
-            return new Response('Brak użytkownika o podanym id');
-        }
 
         return $this->render('AddrBookBundle::show_all_person.html.twig', ['person' => $person]);
     }

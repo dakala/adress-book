@@ -17,7 +17,7 @@ class AddressController extends Controller
         $em = $this->getDoctrine()->getManager();
         $address = $em->getRepository('AddrBookBundle:Address')->find($id);
         if (!$address) {
-            return new Response('Brak adresu o podanym id');
+            return $this->redirectToRoute("index");
         }
         $em->remove($address);
         $em->flush();
