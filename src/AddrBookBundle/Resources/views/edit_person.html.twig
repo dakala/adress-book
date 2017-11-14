@@ -18,20 +18,20 @@
         </tr>
         </thead>
         <tbody>
-    {% for address in addresses %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ address.city }}, {{ address.street }} {{ address.houseNum }} m. {{ address.flatNum }}</td>
-            <td>
-                <a href=" {{ path('delete_address_id', {'id' : address.id}) }}">
-                    <button type="button" class="btn btn-danger">Usuń</button>
-                </a>
-            </td>
-        </tr>
-    {% else %}
-        <p>Brak adresów</p>
-    {% endfor %}
-    </tbody>
+        {% for address in addresses %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ address.city }}, {{ address.street }} {{ address.houseNum }} m. {{ address.flatNum }}</td>
+                <td>
+                    <a href=" {{ path('delete_address_id', {'id' : address.id}) }}">
+                        <button type="button" class="btn btn-danger">Usuń</button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <p>Brak adresów</p>
+        {% endfor %}
+        </tbody>
     </table>
 
 
@@ -39,6 +39,71 @@
     {{ form_start(form2) }}
     {{ form_widget(form2) }}
     {{ form_end(form2) }}
+
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>L.p.</th>
+            <th>E-mail</th>
+            <th>Usuwanie</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for email in emails %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ email.emailAddr }}, Typ:  {{ email.emailType }}</td>
+                <td>
+                    <a href=" {{ path('delete_email_id', {'id' : email.id}) }}">
+                        <button type="button" class="btn btn-danger">Usuń</button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <p>Brak adresów</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Dodawanie e-mail</h1>
+    {{ form_start(form3) }}
+    {{ form_widget(form3) }}
+    {{ form_end(form3) }}
+
+
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>L.p.</th>
+            <th>Numer telefonu</th>
+            <th>Usuwanie</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for phone in phones %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ phone.phoneNum }}, Typ:  {{ phone.phoneType }}</td>
+                <td>
+                    <a href=" {{ path('delete_phone_id', {'id' : phone.id}) }}">
+                        <button type="button" class="btn btn-danger">Usuń</button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <p>Brak numerów telefonu</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Dodawanie numeru telefonu</h1>
+    {{ form_start(form4) }}
+    {{ form_widget(form4) }}
+    {{ form_end(form4) }}
 
     <br><br>
 

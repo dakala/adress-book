@@ -30,4 +30,51 @@
     </table>
     <div>
 
+
+    <h4>Adresy e-mail:</h4>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>L.p.</th>
+            <th>E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for email in emails %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ email.emailAddr }}, {{ email.emailType }} </td>
+            </tr>
+        {% else %}
+            <p>Brak adresów e-mail</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+
+    <h4>Numery  e-telefonu:</h4>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>L.p.</th>
+            <th>Nr telefonu</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for phone in phones %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ phone.phoneNum }}, {{ phone.phoneType }} </td>
+            </tr>
+        {% else %}
+            <p>Brak numerów telefonu</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+
 {% endblock %}
