@@ -21,9 +21,9 @@ class AddressController extends Controller
         $addr = $addresses->find($address);
         $person = $address->getPersonId();
         $person = $person->getId();
-        if (!$addr) {
-            return $this->redirectToRoute("index");
-        }
+//        if (!$addr) {
+//            return $this->redirectToRoute("index");
+//        }
         $em->remove($addr);
         $em->flush();
 

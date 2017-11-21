@@ -13,11 +13,32 @@ use AddrBookBundle\Form\PhoneType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PersonController extends Controller
 {
+
+    /**
+     * @Route("/", name="index")
+     * @Method("GET")
+     * @return Response
+     */
+    public function showAllAction()
+    {
+     $this->denyAccessUnlessGranted('ROLE_USER');
+
+     $em = $this->getDoctrine()->getManager();
+     $persons = $em->getRepository('AddrBookBundle:Person')
+         ->findByUser($this->getUser());
+
+     dump($persons);
+
+     dump($this->getUser());
+        return $this->render('AddrBookBundle::show_all_person.html.twig', ['persons' => $persons]);
+    }
+
     /**
      * @Route("/new", name="new")
      * @param Request $request
@@ -25,11 +46,16 @@ class PersonController extends Controller
      */
     public function newAction(Request $request)
     {
+       $this->denyAccessUnlessGranted('ROLE_USER');
+
         $person = new Person();
         $form = $this->createForm(PersonType::class, $person);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted()) {
+
+            $person->setUser($this->getUser());
 
             $person = $form->getData();
 
@@ -53,6 +79,8 @@ class PersonController extends Controller
      */
     public function modifyAction(Request $request, Person $person)
     {
+
+       $this->denyAccessUnlessGranted('ROLE_USER');
 
         $em = $this->getDoctrine()->getManager();
         $emails = $em->getRepository('AddrBookBundle:Email')
@@ -151,6 +179,8 @@ class PersonController extends Controller
      */
     public function deleteAction(Person $person)
     {
+      $this->denyAccessUnlessGranted("ROLE_USER");
+
         $em = $this->getDoctrine()->getManager();
         if (!$person) {
             return $this->redirectToRoute("index");
@@ -162,13 +192,15 @@ class PersonController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="show_id")
-     * @Method("GET")
-     * @param Person $person
-     * @return Response
+     * @Route("show/{id}", name="show_id")
+     * @param Person|null $person
+     * @return RedirectResponse | Response
+     *
      */
-    public function showAction(Person $person)
+    public function showAction(Person $person = null)
     {
+       $this->denyAccessUnlessGranted('ROLE_USER');
+
         if (!$person) {
             return $this->redirectToRoute("index");
         }
@@ -180,6 +212,11 @@ class PersonController extends Controller
             ->findByPerson($person);
         $phones = $em->getRepository(Phone::class)
             ->findByPerson($person);
+        $person = $em->getRepository('AddrBookBundle:Person')
+            ->findOneBy(['id' => $person]);
+        if ($person == null) {
+            return $this->redirectToRoute("index");
+        }
 
         return $this->render(
             'AddrBookBundle::show_person.html.twig',
@@ -188,24 +225,7 @@ class PersonController extends Controller
                 'addresses' => $addresses,
                 'emails' => $emails,
                 'phones' => $phones,
-
             ]
         );
     }
-
-    /**
-     * @Route("/", name="index")
-     * @Method("GET")
-     * @return Response
-     */
-    public function showAllAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AddrBookBundle:Person')
-            ->findBy([], ['surname' => 'ASC']);
-
-        return $this->render('AddrBookBundle::show_all_person.html.twig', ['person' => $person]);
-    }
-
-
 }
