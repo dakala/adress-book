@@ -63,7 +63,7 @@ class AddressType extends AbstractType
                     "label" => "Zapisz",
 
                     'attr' => [
-                        'class' => 'top-marg btn',
+                        'class' => 'top-marg btn btn-primary',
                     ],
                 ]
             );
