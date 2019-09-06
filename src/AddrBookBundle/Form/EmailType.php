@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddressType extends AbstractType
+class EmailType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,45 +17,26 @@ class AddressType extends AbstractType
     {
         $builder
             ->add(
-                'city',
+                'emailAddr',
                 TextType::class,
                 [
-                    'label' => "Miasto",
+                    'label' => "E-mail",
                     'attr' => [
                         'class' => 'form-control',
                     ],
                 ]
             )
             ->add(
-                'street',
+                'emailType',
                 TextType::class,
                 [
-                    'label' => "Ulica",
+                    'label' => "Typ e-maila (praca, dom itd.)",
                     'attr' => [
                         'class' => 'form-control',
                     ],
                 ]
             )
-            ->add(
-                'houseNum',
-                TextType::class,
-                [
-                    'label' => "Numer Domu",
-                    'attr' => [
-                        'class' => 'form-control',
-                    ],
-                ]
-            )
-            ->add(
-                'flatNum',
-                TextType::class,
-                [
-                    'label' => "Numer mieszkania",
-                    'attr' => [
-                        'class' => 'form-control',
-                    ],
-                ]
-            )
+
             ->add(
                 "submit",
                 SubmitType::class,
@@ -76,7 +57,7 @@ class AddressType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'AddrBookBundle\Entity\Address',
+                'data_class' => 'AddrBookBundle\Entity\Email',
             )
         );
     }
@@ -86,7 +67,7 @@ class AddressType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'addrbookbundle_address';
+        return 'addrbookbundle_email';
     }
 
 

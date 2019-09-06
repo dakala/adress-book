@@ -24,9 +24,15 @@ class Person
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $user;
+
+    /**
      * @ORM\OneToMany(targetEntity="Address", mappedBy="person", cascade={"remove"})
      */
     private $address;
+
 
     /**
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="person")
@@ -250,5 +256,31 @@ class Person
     public function getEmail()
     {
         return $this->email;
+    }
+
+
+
+    /**
+     * Set user
+     *
+     * @param \AddrBookBundle\Entity\User $user
+     *
+     * @return Person
+     */
+    public function setUser(\AddrBookBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AddrBookBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

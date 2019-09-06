@@ -13,11 +13,11 @@
             </tr>
             </thead>
             <tbody>
-            {% for element in person %}
+            {% for element in persons %}
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td><a href="{{ path('index') }} {{ element.id }}">{{ element.surname }} {{ element.name }}</a></td>
-                    <td><a href=" {{ path('index') }} {{ element.id }}">
+                    <td><a href=" {{ path('index') }}show/{{ element.id }}">
                             <button type="button" class="btn btn-info">Info</button>
                         </a></td>
                     <td><a href=" {{ path('delete', {'id' : element.id}) }}">

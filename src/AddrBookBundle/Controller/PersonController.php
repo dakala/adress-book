@@ -2,18 +2,43 @@
 
 namespace AddrBookBundle\Controller;
 
+use AddrBookBundle\Entity\Email;
 use AddrBookBundle\Entity\Person;
 use AddrBookBundle\Entity\Address;
+use AddrBookBundle\Entity\Phone;
+use AddrBookBundle\Form\EmailType;
 use AddrBookBundle\Form\PersonType;
 use AddrBookBundle\Form\AddressType;
+use AddrBookBundle\Form\PhoneType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PersonController extends Controller
 {
+
+    /**
+     * @Route("/", name="index")
+     * @Method("GET")
+     * @return Response
+     */
+    public function showAllAction()
+    {
+     $this->denyAccessUnlessGranted('ROLE_USER');
+
+     $em = $this->getDoctrine()->getManager();
+     $persons = $em->getRepository('AddrBookBundle:Person')
+         ->findByUser($this->getUser());
+
+     dump($persons);
+
+     dump($this->getUser());
+        return $this->render('AddrBookBundle::show_all_person.html.twig', ['persons' => $persons]);
+    }
+
     /**
      * @Route("/new", name="new")
      * @param Request $request
@@ -21,11 +46,16 @@ class PersonController extends Controller
      */
     public function newAction(Request $request)
     {
+       $this->denyAccessUnlessGranted('ROLE_USER');
+
         $person = new Person();
         $form = $this->createForm(PersonType::class, $person);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted()) {
+
+            $person->setUser($this->getUser());
 
             $person = $form->getData();
 
@@ -49,6 +79,18 @@ class PersonController extends Controller
      */
     public function modifyAction(Request $request, Person $person)
     {
+
+       $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $em = $this->getDoctrine()->getManager();
+        $emails = $em->getRepository('AddrBookBundle:Email')
+            ->findByPerson($person);
+        $phones = $em->getRepository(Phone::class)
+            ->findByPerson($person);
+        $em = $this->getDoctrine()->getManager();
+        $addresses = $em->getRepository('AddrBookBundle:Address')
+            ->findByPerson($person);
+
         $form = $this->createForm(PersonType::class, $person);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -59,12 +101,8 @@ class PersonController extends Controller
             $em->persist($person);
             $em->flush();
 
-            return $this->redirectToRoute("show_id", ['id' => $person]);
+            return $this->redirectToRoute("show_id", ['id' => $person->getId()]);
         }
-
-        $em = $this->getDoctrine()->getManager();
-        $addresses = $em->getRepository('AddrBookBundle:Address')
-            ->findByPerson($person);
 
 
         $address = new Address();
@@ -81,14 +119,40 @@ class PersonController extends Controller
             $em->persist($address);
             $em->flush();
 
-            return $this->render(
-                'AddrBookBundle::edit_person.html.twig',
-                [
-                    'form' => $form->createView(),
-                    'addresses' => $addresses,
-                    'form2' => $form2->createView(),
-                ]
-            );
+            return $this->redirectToRoute("show_id", ['id' => $person->getId()]);
+        }
+
+
+        $email = new Email();
+        $email->setPerson($person);
+        $form3 = $this->createForm(EmailType::class, $email);
+        $form3->handleRequest($request);
+        if ($form3->isSubmitted()) {
+
+            $email = $form3->getData();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($email);
+            $em->flush();
+
+            return $this->redirectToRoute("show_id", ['id' => $person->getId()]);
+        }
+
+        $phone = new Phone();
+        $phone->setPerson($person);
+        $form4 = $this->createForm(PhoneType::class, $phone);
+        $form4->handleRequest($request);
+        if ($form4->isSubmitted()) {
+
+            $phone = $form4->getData();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($phone);
+            $em->flush();
+
+            return $this->redirectToRoute("show_id", ['id' => $person->getId()]);
         }
 
 
@@ -96,13 +160,16 @@ class PersonController extends Controller
             'AddrBookBundle::edit_person.html.twig',
             [
                 'form' => $form->createView(),
-                'addresses' => $addresses,
                 'form2' => $form2->createView(),
+                'form3' => $form3->createView(),
+                'form4' => $form4->createView(),
+                'addresses' => $addresses,
+                'emails' => $emails,
+                'phones' => $phones,
             ]
         );
 
     }
-
 
     /**
      * @Route("/{id}/delete", name="delete")
@@ -112,7 +179,9 @@ class PersonController extends Controller
      */
     public function deleteAction(Person $person)
     {
-       $em = $this->getDoctrine()->getManager();
+      $this->denyAccessUnlessGranted("ROLE_USER");
+
+        $em = $this->getDoctrine()->getManager();
         if (!$person) {
             return $this->redirectToRoute("index");
         }
@@ -123,13 +192,15 @@ class PersonController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="show_id")
-     * @Method("GET")
-     * @param Person $person
-     * @return Response
+     * @Route("show/{id}", name="show_id")
+     * @param Person|null $person
+     * @return RedirectResponse | Response
+     *
      */
-    public function showAction(Person $person)
+    public function showAction(Person $person = null)
     {
+       $this->denyAccessUnlessGranted('ROLE_USER');
+
         if (!$person) {
             return $this->redirectToRoute("index");
         }
@@ -137,29 +208,24 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $addresses = $em->getRepository('AddrBookBundle:Address')
             ->findByPerson($person);
+        $emails = $em->getRepository('AddrBookBundle:Email')
+            ->findByPerson($person);
+        $phones = $em->getRepository(Phone::class)
+            ->findByPerson($person);
+        $person = $em->getRepository('AddrBookBundle:Person')
+            ->findOneBy(['id' => $person]);
+        if ($person == null) {
+            return $this->redirectToRoute("index");
+        }
 
         return $this->render(
             'AddrBookBundle::show_person.html.twig',
             [
                 'person' => $person,
                 'addresses' => $addresses,
+                'emails' => $emails,
+                'phones' => $phones,
             ]
         );
     }
-
-    /**
-     * @Route("/", name="index")
-     * @Method("GET")
-     * @return Response
-     */
-    public function showAllAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AddrBookBundle:Person')
-            ->findBy([], ['surname' => 'ASC']);
-
-        return $this->render('AddrBookBundle::show_all_person.html.twig', ['person' => $person]);
-    }
-
-
 }
